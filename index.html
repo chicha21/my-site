@@ -2,97 +2,406 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Бригада мастеров — Электрика и Ремонт в СПб</title>
-```html
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+            -webkit-tap-highlight-color: transparent;
+            padding-bottom: 40px;
+        }
+        /* Меню-кнопка (бургер) */
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            cursor: pointer;
+            background: #27ae60;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            border: none;
+        }
+        .menu-btn div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+        /* Боковое меню */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: #1f1f1f;
+            z-index: 999;
+            transition: 0.3s;
+            padding-top: 70px;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        }
+        .side-menu a {
+            display: block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #333;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .side-menu a:hover {
+            background: #27ae60;
+            padding-left: 35px;
+        }
+        .side-menu.active {
+            left: 0;
+        }
+        /* Затемнение фона */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 998;
+        }
+        .overlay.active {
+            display: block;
+        }
+        /* Шапка */
+        header {
+            background: #1f1f1f;
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-bottom: 4px solid #27ae60;
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        header p {
+            color: #aaa;
+        }
+        /* Основной контейнер */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        /* Категории (аккордеон) */
+        .category {
+            background: #1e1e1e;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #333;
+            overflow: hidden;
+        }
+        .cat-btn {
+            width: 100%;
+            padding: 18px;
+            background: none;
+            border: none;
+            color: #fff;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content {
+            display: none;
+            padding: 0 20px 15px;
+            background: #181818;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .price {
+            color: #2ecc71;
+            font-weight: bold;
+            font-size: 0.9rem;
+            min-width: 90px;
+        }
+        .pay-link {
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .pay-link:hover {
+            background: #1e874b;
+        }
+        /* Секции информации (О компании, гарантии и т.д.) */
+        .info-section {
+            display: none;
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border-left: 5px solid #27ae60;
+            animation: fadeIn 0.4s;
+        }
+        .info-section.active {
+            display: block;
+        }
+        .info-section h2 {
+            color: #27ae60;
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .garant-list {
+            list-style: none;
+            padding: 0;
+        }
+        .garant-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        .garant-list li::before {
+            content: '✔️';
+            margin-right: 10px;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .contact-block {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+        .contact-block a {
+            color: #2ecc71;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Главный блок с услугами */
+        #mainSection {
+            display: block;
+        }
+        footer {
+            text-align: center;
+            margin: 30px 15px 20px;
+            font-size: 0.75rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
 
+<!-- Кнопка бургер-меню -->
+<div class="menu-btn" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
 
+<!-- Боковое меню -->
+<div class="side-menu" id="sideMenu">
+    <a onclick="showSection('main')">🏠 Главная (Услуги)</a>
+    <a onclick="showSection('contact')">📞 Связаться с мастером</a>
+    <a onclick="showSection('about')">📄 О компании</a>
+    <a onclick="showSection('guarantee')">🛡️ Наши гарантии</a>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
+<!-- Шапка -->
+<header>
+    <h1>Бригада Мастеров</h1>
+    <p>Электрика под ключ и ремонт в СПб</p>
+</header>
 
+<div class="container">
+    <!-- Основной раздел с услугами (аккордеон) -->
+    <div id="mainSection">
+        <!-- Категория: Электрика -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">
+                ⚡ Электрика под ключ <span>+</span>
+            </button>
+            <div class="content">
+                <div class="item">
+                    <span>Электрика под ключ (объект)</span>
+                    <div><span class="price">от 5 000 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+                <div class="item">
+                    <span>Сборка электрощита</span>
+                    <div><span class="price">от 1 500 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+                <div class="item">
+                    <span>Монтаж СИП / Опор ЛЭП</span>
+                    <div><span class="price">от 20 000 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+                <div class="item">
+                    <span>Прокладка кабеля</span>
+                    <div><span class="price">от 95 ₽/м</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- Категория: Строительные услуги -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">
+                🏗️ Строительные услуги <span>+</span>
+            </button>
+            <div class="content">
+                <div class="item">
+                    <span>Укладка плитки / брусчатки</span>
+                    <div><span class="price">от 1 000 ₽/м²</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+                <div class="item">
+                    <span>Натяжные потолки</span>
+                    <div><span class="price">от 2 800 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+                <div class="item">
+                    <span>Вывоз грунта (погрузка)</span>
+                    <div><span class="price">от 600 ₽/м³</span> <a href="#" class="pay-link">Заказать</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-Бригада мастеров — Электрика и Ремонт в СПб
+    <!-- Страница "Связаться с мастером" -->
+    <div id="contact" class="info-section">
+        <h2>📞 Связаться с нами</h2>
+        <p>Мастер ответит на все вопросы и поможет рассчитать стоимость.</p>
+        <div class="contact-block">
+            <p>📞 <strong>Позвонить:</strong> <a href="tel:+79117800879">+7 911 780-08-79</a></p>
+            <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/79117800879" target="_blank">Написать мастеру</a></p>
+        </div>
+    </div>
 
-body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; -webkit-tap-highlight-color: transparent; }
-.menu-btn { position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; background: #27ae60; padding: 10px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 5px; border: none; }
-.menu-btn div { width: 25px; height: 3px; background: white; transition: 0.3s; }
-.side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #1f1f1f; z-index: 999; transition: 0.3s; padding-top: 70px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
-.side-menu a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid #333; transition: 0.2s; cursor: pointer; }
-.side-menu a:hover { background: #27ae60; padding-left: 35px; }
-.side-menu.active { left: 0; }
-header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; border-bottom: 4px solid #27ae60; }
-.container { max-width: 800px; margin: 20px auto; padding: 0 15px; padding-bottom: 50px; }
-.category { background: #1e1e1e; border-radius: 10px; margin-bottom: 12px; border: 1px solid #333; overflow: hidden; }
-.cat-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-.content { display: none; padding: 0 20px 15px; background: #181818; }
-.item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
-.price { color: #2ecc71; font-weight: bold; display: block; font-size: 0.9rem; }
-.pay-link { background: #27ae60; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; }
-.info-section { display: none; background: #1e1e1e; padding: 25px; border-radius: 12px; margin-top: 10px; border-left: 5px solid #27ae60; animation: fadeIn 0.4s; }
-.info-section.active { display: block; }
-.garant-list { list-style: none; padding: 0; }
-.garant-list li { padding: 10px 0; border-bottom: 1px solid #333; display: flex; align-items: center; }
-.garant-list li::before { content: '✔️'; margin-right: 10px; color: #27ae60; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    <!-- Страница "О компании" -->
+    <div id="about" class="info-section">
+        <h2>📄 О компании</h2>
+        <p>Наша бригада предлагает широкий спектр строительных и электромонтажных услуг в Санкт-Петербурге и области. Специализируемся на качественных решениях для дома и офиса. Беремся за задачи любой сложности: от мелкого ремонта до масштабной электрификации и ландшафтных работ.</p>
+        <p style="margin-top: 15px;">✅ Команда профессионалов со стажем от 7 лет.</p>
+        <p>✅ Лицензия на проведение работ. Выезд до 50 км от Санкт-Петербурга.</p>
+    </div>
 
+    <!-- Страница "Наши гарантии" -->
+    <div id="guarantee" class="info-section">
+        <h2>🛡️ Наши гарантии</h2>
+        <ul class="garant-list">
+            <li>Фиксированная стоимость услуг</li>
+            <li>3 года реальной гарантии</li>
+            <li>Послегарантийное обслуживание</li>
+            <li>Мастера с опытом от 7 лет</li>
+            <li>Лицензия на проведение работ</li>
+            <li>Выезд до 50 км от Санкт-Петербурга</li>
+            <li>Полный набор профессиональных инструментов</li>
+        </ul>
+    </div>
+</div>
 
+<footer>
+    © 2025 Бригада Мастеров — электромонтаж и ремонт в СПб
+</footer>
 
+<script>
+    // Функция открытия/закрытия бокового меню
+    function toggleMenu() {
+        const menu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+    }
 
+    // Функция аккордеона (раскрытие блока с услугами)
+    function toggleCat(btn) {
+        const content = btn.nextElementSibling;
+        const isOpen = content.style.display === "block";
+        // Закрываем или открываем блок
+        content.style.display = isOpen ? "none" : "block";
+        // Меняем символ в кнопке (+ / -)
+        const span = btn.querySelector('span');
+        if (span) {
+            span.innerHTML = isOpen ? "+" : "−";
+        }
+    }
 
-🏠 Главная
-📞 Контакты
-📄 О компании
-🛡️ Гарантии
-
-Бригада Мастеров
-Электрика и Ремонт в СПб
-
-
-
-⚡ Электрика +
-
-
-Электрика под ключот 5 000 ₽
-Заказать
-
-
-Сборка электрощитаот 1 500 ₽
-Заказать
-
-
-
-
-Контакты
-📞 Тел: +7 (911) 780-08-79
-💬 WhatsApp: Написать мастеру
-
-О компании
-Профессиональный монтаж и ремонт любой сложности в Санкт-Петербурге и области. Опыт более 7 лет.
-
-Наши гарантии
-
-Гарантия 3 года на работы
-Фиксированная цена
-Профессиональный инструмент
-
-
-
-function toggleMenu() {
-document.getElementById('sideMenu').classList.toggle('active');
-}
-function toggleCat(btn) {
-const content = btn.nextElementSibling;
-const isOpen = content.style.display === "block";
-content.style.display = isOpen ? "none" : "block";
-btn.querySelector('span').innerText = isOpen ? "+" : "−";
-}
-function showSection(id) {
-document.getElementById('mainSection').style.display = 'none';
-document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
-if(id === 'main') {
-document.getElementById('mainSection').style.display = 'block';
-} else {
-document.getElementById(id).classList.add('active');
-}
-toggleMenu();
-window.scrollTo(0,0);
-}
+    // Функция переключения между разделами: главная / контакты / о компании / гарантии
+    function showSection(sectionId) {
+        // Скрываем основной блок услуг
+        const mainBlock = document.getElementById('mainSection');
+        if (mainBlock) mainBlock.style.display = 'none';
+        
+        // Скрываем все info-секции
+        const infoSections = document.querySelectorAll('.info-section');
+        infoSections.forEach(section => {
+            section.classList.remove('active');
+        });
+        
+        if (sectionId === 'main') {
+            // Показываем главный блок с аккордеоном
+            if (mainBlock) mainBlock.style.display = 'block';
+        } else {
+            // Показываем выбранную секцию (contact, about, guarantee)
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) targetSection.classList.add('active');
+        }
+        
+        // Закрываем меню после выбора пункта
+        toggleMenu();  // закрывает бургер-меню и оверлей
+        
+        // Прокручиваем страницу вверх
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Чтобы аккордеон по умолчанию был закрыт, но можно оставить первый открытым? 
+    // По желанию: закроем оба блока, чтобы страница выглядела аккуратно. 
+    // Уже в стилях .content { display: none; } — всё закрыто.
+    // Небольшой фикс: инициализация символов + у всех кнопок
+    document.addEventListener('DOMContentLoaded', function() {
+        const catBtns = document.querySelectorAll('.cat-btn');
+        catBtns.forEach(btn => {
+            let span = btn.querySelector('span');
+            if (span && span.innerText !== '+') {
+                span.innerText = '+';
+            }
+            // Убедимся что все контенты скрыты
+            let contentDiv = btn.nextElementSibling;
+            if (contentDiv && contentDiv.classList.contains('content')) {
+                contentDiv.style.display = 'none';
+            }
+        });
+    });
+</script>
+</body>
+</html>
