@@ -3,81 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бригада мастеров — Электрика и Ремонт</title>
+    <title>Бригада мастеров — Прайс и Оплата</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; }
-        header { background: #1f1f1f; padding: 40px 20px; text-align: center; border-bottom: 4px solid #27ae60; }
-        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
-        .category { background: #1e1e1e; border-radius: 10px; margin-bottom: 12px; border: 1px solid #333; }
-        .category-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.2rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .content { display: none; padding: 0 20px 20px 20px; border-top: 1px solid #333; background: #181818; }
-        .item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #2a2a2a; font-size: 0.95rem; }
-        .p-val { color: #2ecc71; font-weight: bold; white-space: nowrap; margin-left: 10px; }
-        .cta { text-align: center; margin: 30px 0; padding: 25px; background: #1e1e1e; border-radius: 15px; border: 1px solid #27ae60; }
-        .btn { display: block; padding: 18px; border-radius: 10px; text-decoration: none; font-weight: bold; margin: 10px 0; font-size: 1.1rem; transition: 0.3s; text-align: center; }
-        .btn-wa { background: #25D366; color: white; }
-        .btn-call { background: #2980b9; color: white; }
-        .btn:hover { transform: scale(1.02); opacity: 0.9; }
-        footer { text-align: center; padding: 20px; color: #666; font-size: 0.8rem; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; padding-bottom: 50px; }
+        header { background: #1f1f1f; padding: 30px 20px; text-align: center; border-bottom: 4px solid #27ae60; }
+        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
+        .category { background: #1e1e1e; border-radius: 12px; margin-bottom: 15px; border: 1px solid #333; overflow: hidden; }
+        .cat-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
+        .content { display: none; padding: 10px 20px; background: #181818; }
+        .item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
+        .info { flex-grow: 1; margin-right: 15px; }
+        .price { color: #2ecc71; font-weight: bold; margin-bottom: 5px; display: block; }
+        .pay-link { background: #27ae60; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; transition: 0.3s; }
+        .pay-link:hover { background: #2ecc71; }
+        .cta-box { text-align: center; margin-top: 30px; background: #1e1e1e; padding: 25px; border-radius: 15px; border: 1px solid #27ae60; }
+        .btn-call { background: #2980b9; color: white; display: block; padding: 15px; text-decoration: none; border-radius: 10px; font-weight: bold; margin-bottom: 10px; }
+        footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Бригада Мастеров</h1>
-    <p>Электрика под ключ и строительные услуги</p>
+    <h1>Профессиональные услуги</h1>
+    <p>Тел: +7 (911) 780-08-79</p>
 </header>
 
 <div class="container">
 
-    <!-- ЭЛЕКТРИКА -->
+    <!-- 1. ЭЛЕКТРОМОНТАЖ -->
     <div class="category">
-        <button class="category-btn" onclick="toggle(this)">⚡ Электрика под ключ <span>+</span></button>
+        <button class="cat-btn" onclick="toggle(this)">🏗️ Электромонтаж и ЛЭП <span>+</span></button>
         <div class="content">
-            <div class="item"><span>Электрика под ключ (объект)</span><span class="p-val">от 5 000 ₽</span></div>
-            <div class="item"><span>Сборка и установка щитов</span><span class="p-val">от 1 500 ₽</span></div>
-            <div class="item"><span>Прокладка кабеля</span><span class="p-val">от 95 ₽/м</span></div>
-            <div class="item"><span>Установка розеток / выключателей</span><span class="p-val">350 ₽/ед.</span></div>
-            <div class="item"><span>Монтаж освещения (люстры, бра)</span><span class="p-val">от 1 000 ₽</span></div>
-            <div class="item"><span>Аварийный вызов мастера</span><span class="p-val">от 2 000 ₽</span></div>
-            <div class="item"><span>Монтаж СИП и опор ЛЭП</span><span class="p-val">от 2 000 ₽</span></div>
+            <div class="item"><div class="info"><span>Электрика под ключ</span><span class="price">от 5 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Монтаж СИП-кабеля</span><span class="price">от 2 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка опор ЛЭП</span><span class="price">20 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Перенос опор ЛЭП</span><span class="price">25 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Монтаж теплого пола</span><span class="price">1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Прокладка кабеля</span><span class="price">от 95 ₽/м</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка генератора</span><span class="price">от 2 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка стабилизатора</span><span class="price">2 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
         </div>
     </div>
 
-    <!-- СТРОЙКА -->
+    <!-- 2. ЩИТЫ И АВТОМАТИКА -->
     <div class="category">
-        <button class="category-btn" onclick="toggle(this)">🏗️ Строительные услуги <span>+</span></button>
+        <button class="cat-btn" onclick="toggle(this)">⚙️ Щиты и автоматика <span>+</span></button>
         <div class="content">
-            <div class="item"><span>Укладка плитки / брусчатки</span><span class="p-val">от 1 000 ₽/м²</span></div>
-            <div class="item"><span>Натяжные потолки</span><span class="p-val">от 2 800 ₽</span></div>
-            <div class="item"><span>Вывоз грунта (с погрузкой)</span><span class="p-val">от 600 ₽/м³</span></div>
-            <div class="item"><span>Демонтажные работы</span><span class="p-val">договорная</span></div>
+            <div class="item"><div class="info"><span>Сборка электрощита</span><span class="price">от 1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка счетчика</span><span class="price">2 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Замена автоматов</span><span class="price">от 350 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Расчёт нагрузки</span><span class="price">1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Пусконаладка</span><span class="price">от 1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
         </div>
     </div>
 
-    <!-- БЛОК СВЯЗИ -->
-    <div class="cta">
-        <h3>Есть вопросы? Свяжитесь с нами напрямую!</h3>
-        
-        <!-- Кнопка ЗВОНКА -->
-        <a href="tel:+79117800879" class="btn btn-call">📞 Обговорить с мастером</a>
-        
-        <!-- Кнопка WHATSAPP -->
-        <a href="https://wa.me" class="btn btn-wa">💬 Написать в WhatsApp</a>
+    <!-- 3. РОЗЕТКИ И СВЕТ -->
+    <div class="category">
+        <button class="cat-btn" onclick="toggle(this)">🔌 Розетки и Освещение <span>+</span></button>
+        <div class="content">
+            <div class="item"><div class="info"><span>Установка розетки</span><span class="price">350 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Перенос розетки</span><span class="price">от 1 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка люстры</span><span class="price">от 1 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Ремонт люстр</span><span class="price">1 500 ₽/ч</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Установка бра</span><span class="price">600 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+        </div>
+    </div>
+
+    <!-- 4. СТРОЙКА И ДЕМОНТАЖ -->
+    <div class="category">
+        <button class="cat-btn" onclick="toggle(this)">🏗️ Строительство и плитка <span>+</span></button>
+        <div class="content">
+            <div class="item"><div class="info"><span>Укладка плитки</span><span class="price">от 1 000 ₽/м²</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Натяжные потолки</span><span class="price">от 2 800 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
+            <div class="item"><div class="info"><span>Вывоз грунта</span><span class="price">от 600 ₽/м³</span></div><a href="#" class="pay-link">Заказать</a></div>
+        </div>
+    </div>
+
+    <div class="cta-box">
+        <a href="tel:+79117800879" class="btn-call">📞 Позвонить мастеру</a>
+        <a href="https://wa.me" style="color: #25D366; text-decoration: none; font-weight: bold;">Написать в WhatsApp</a>
     </div>
 
 </div>
 
-<footer>
-    &copy; 2026 Профессиональная бригада. Тел: +7 911 780-08-79
-</footer>
+<footer>&copy; 2026 Бригада Мастеров. Работаем на совесть.</footer>
 
 <script>
-function toggle(btn) {
-    var content = btn.nextElementSibling;
-    content.style.display = content.style.display === "block" ? "none" : "block";
-    btn.querySelector('span').innerHTML = content.style.display === "block" ? "−" : "+";
-}
+    // КОГДА ПОЛУЧИШЬ ССЫЛКУ ОТ ЮКАССЫ, ВСТАВЬ ЕЕ В КАВЫЧКИ НИЖЕ
+    var yourYookassaLink = "ССЫЛКА_ТУТ";
+
+    function toggle(btn) {
+        var content = btn.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+        btn.querySelector('span').innerHTML = content.style.display === "block" ? "−" : "+";
+    }
+
+    // Автоматически проставляем ссылку всем кнопкам
+    document.querySelectorAll('.pay-link').forEach(link => {
+        link.href = yourYookassaLink;
+    });
 </script>
 
 </body>
