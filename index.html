@@ -1,108 +1,117 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бригада мастеров — Прайс и Оплата</title>
-    <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; padding-bottom: 50px; }
-        header { background: #1f1f1f; padding: 30px 20px; text-align: center; border-bottom: 4px solid #27ae60; }
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .category { background: #1e1e1e; border-radius: 12px; margin-bottom: 15px; border: 1px solid #333; overflow: hidden; }
-        .cat-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; }
-        .content { display: none; padding: 10px 20px; background: #181818; }
-        .item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
-        .info { flex-grow: 1; margin-right: 15px; }
-        .price { color: #2ecc71; font-weight: bold; margin-bottom: 5px; display: block; }
-        .pay-link { background: #27ae60; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; transition: 0.3s; }
-        .pay-link:hover { background: #2ecc71; }
-        .cta-box { text-align: center; margin-top: 30px; background: #1e1e1e; padding: 25px; border-radius: 15px; border: 1px solid #27ae60; }
-        .btn-call { background: #2980b9; color: white; display: block; padding: 15px; text-decoration: none; border-radius: 10px; font-weight: bold; margin-bottom: 10px; }
-        footer { text-align: center; margin-top: 30px; color: #666; font-size: 0.8rem; }
-    </style>
-</head>
-<body>
+```html
 
-<header>
-    <h1>Профессиональные услуги</h1>
-    <p>Тел: +7 (911) 780-08-79</p>
-</header>
 
-<div class="container">
 
-    <!-- 1. ЭЛЕКТРОМОНТАЖ -->
-    <div class="category">
-        <button class="cat-btn" onclick="toggle(this)">🏗️ Электромонтаж и ЛЭП <span>+</span></button>
-        <div class="content">
-            <div class="item"><div class="info"><span>Электрика под ключ</span><span class="price">от 5 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Монтаж СИП-кабеля</span><span class="price">от 2 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка опор ЛЭП</span><span class="price">20 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Перенос опор ЛЭП</span><span class="price">25 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Монтаж теплого пола</span><span class="price">1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Прокладка кабеля</span><span class="price">от 95 ₽/м</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка генератора</span><span class="price">от 2 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка стабилизатора</span><span class="price">2 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-        </div>
-    </div>
 
-    <!-- 2. ЩИТЫ И АВТОМАТИКА -->
-    <div class="category">
-        <button class="cat-btn" onclick="toggle(this)">⚙️ Щиты и автоматика <span>+</span></button>
-        <div class="content">
-            <div class="item"><div class="info"><span>Сборка электрощита</span><span class="price">от 1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка счетчика</span><span class="price">2 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Замена автоматов</span><span class="price">от 350 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Расчёт нагрузки</span><span class="price">1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Пусконаладка</span><span class="price">от 1 500 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-        </div>
-    </div>
 
-    <!-- 3. РОЗЕТКИ И СВЕТ -->
-    <div class="category">
-        <button class="cat-btn" onclick="toggle(this)">🔌 Розетки и Освещение <span>+</span></button>
-        <div class="content">
-            <div class="item"><div class="info"><span>Установка розетки</span><span class="price">350 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Перенос розетки</span><span class="price">от 1 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка люстры</span><span class="price">от 1 000 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Ремонт люстр</span><span class="price">1 500 ₽/ч</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Установка бра</span><span class="price">600 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-        </div>
-    </div>
+Бригада мастеров — Электрика и Ремонт в СПб
 
-    <!-- 4. СТРОЙКА И ДЕМОНТАЖ -->
-    <div class="category">
-        <button class="cat-btn" onclick="toggle(this)">🏗️ Строительство и плитка <span>+</span></button>
-        <div class="content">
-            <div class="item"><div class="info"><span>Укладка плитки</span><span class="price">от 1 000 ₽/м²</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Натяжные потолки</span><span class="price">от 2 800 ₽</span></div><a href="#" class="pay-link">Заказать</a></div>
-            <div class="item"><div class="info"><span>Вывоз грунта</span><span class="price">от 600 ₽/м³</span></div><a href="#" class="pay-link">Заказать</a></div>
-        </div>
-    </div>
+body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; -webkit-tap-highlight-color: transparent; }
+/* Боковое меню */
+.menu-btn { position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; background: #27ae60; padding: 10px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 5px; }
+.menu-btn div { width: 25px; height: 3px; background: white; transition: 0.3s; }
+.side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #1f1f1f; z-index: 999; transition: 0.3s; padding-top: 70px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
+.side-menu a { display: block; padding: 15px 25px; color: white; text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid #333; transition: 0.2s; }
+.side-menu a:hover { background: #27ae60; padding-left: 35px; }
+.side-menu.active { left: 0; }
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 998; }
+.overlay.active { display: block; }
+header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; border-bottom: 4px solid #27ae60; }
+.container { max-width: 800px; margin: 20px auto; padding: 0 15px; padding-bottom: 50px; }
+/* Категории прайса */
+.category { background: #1e1e1e; border-radius: 10px; margin-bottom: 12px; border: 1px solid #333; overflow: hidden; }
+.cat-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.content { display: none; padding: 0 20px 15px; background: #181818; }
+.item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
+.price { color: #2ecc71; font-weight: bold; display: block; font-size: 0.9rem; }
+.pay-link { background: #27ae60; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; }
+/* Инфо-секции */
+.info-section { display: none; background: #1e1e1e; padding: 25px; border-radius: 12px; margin-top: 10px; border-left: 5px solid #27ae60; animation: fadeIn 0.4s; }
+.info-section.active { display: block; }
+.info-section h2 { color: #27ae60; margin-top: 0; font-size: 1.5rem; }
+.garant-list { list-style: none; padding: 0; }
+.garant-list li { padding: 10px 0; border-bottom: 1px solid #333; display: flex; align-items: center; }
+.garant-list li::before { content: '✔️'; margin-right: 10px; color: #27ae60; font-weight: bold; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    <div class="cta-box">
-        <a href="tel:+79117800879" class="btn-call">📞 Позвонить мастеру</a>
-        <a href="https://wa.me" style="color: #25D366; text-decoration: none; font-weight: bold;">Написать в WhatsApp</a>
-    </div>
 
-</div>
 
-<footer>&copy; 2026 Бригада Мастеров. Работаем на совесть.</footer>
 
-<script>
-    // КОГДА ПОЛУЧИШЬ ССЫЛКУ ОТ ЮКАССЫ, ВСТАВЬ ЕЕ В КАВЫЧКИ НИЖЕ
-    var yourYookassaLink = "ССЫЛКА_ТУТ";
+🏠 Главная (Услуги)
+📞 Связаться с мастером
+📄 О компании
+🛡️ Наши гарантии
 
-    function toggle(btn) {
-        var content = btn.nextElementSibling;
-        content.style.display = content.style.display === "block" ? "none" : "block";
-        btn.querySelector('span').innerHTML = content.style.display === "block" ? "−" : "+";
-    }
+Бригада Мастеров
+Электрика под ключ и строительные услуги в СПб
 
-    // Автоматически проставляем ссылку всем кнопкам
-    document.querySelectorAll('.pay-link').forEach(link => {
-        link.href = yourYookassaLink;
-    });
-</script>
 
-</body>
-</html>
+
+⚡ Электрика под ключ +
+
+Электрика под ключ (объект)от 5 000 ₽Заказать
+Сборка электрощитаот 1 500 ₽Заказать
+Монтаж СИП / Опор ЛЭПот 20 000 ₽Заказать
+Прокладка кабеляот 95 ₽/мЗаказать
+
+
+💡 Освещение и Розетки +
+
+Установка розетки / выкл.350 ₽Заказать
+Перенос розетокот 1 000 ₽Заказать
+Установка люстры / браот 600 ₽Заказать
+Светодиодная лента1 200 ₽/чЗаказать
+
+
+🏗️ Строительство и плитка +
+
+Укладка плитки / брусчаткиот 1 000 ₽/м²Заказать
+Натяжные потолкиот 2 800 ₽Заказать
+Вывоз грунта (погрузка)от 600 ₽/м³Заказать
+
+
+
+
+Связаться с нами
+Мы гарантируем быстрый ответ и профессиональную консультацию по вашему объекту.
+📞 Позвонить: +7 911 780-08-79
+💬 Написать в WhatsApp
+
+
+О компании
+Наша бригада предлагает широкий спектр строительных и электромонтажных услуг в Санкт-Петербурге и области. Мы специализируемся на качественных и быстрых решениях для дома, офиса и загородных участков.
+Наша команда профессионалов готова помочь вам с задачами любой сложности: от мелкого ремонта до масштабной электрификации объектов и ландшафтных работ. Команда состоит из опытных специалистов со стажем от 7 лет.
+Почему выбирают нас? Мы гарантируем оперативный выезд мастера на замер, честные рыночные цены и индивидуальный подход к каждому заказчику.
+
+
+Наши гарантии
+
+Фиксированная стоимость услуг
+3 года реальной гарантии
+Послегарантийное обслуживание
+Компетентные мастера с опытом от 7 лет
+Лицензия на проведение работ
+Выезд до 50 км от Санкт-Петербурга
+Полный набор профессиональных инструментов
+
+
+function toggleMenu() {
+document.getElementById('sideMenu').classList.toggle('active');
+document.getElementById('overlay').classList.toggle('active');
+}
+function toggleCat(btn) {
+var content = btn.nextElementSibling;
+content.style.display = content.style.display === "block" ? "none" : "block";
+btn.querySelector('span').innerHTML = content.style.display === "block" ? "−" : "+";
+}
+function showSection(id) {
+document.getElementById('mainSection').style.display = 'none';
+document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
+if(id === 'main') { document.getElementById('mainSection').style.display = 'block'; }
+else { document.getElementById(id).classList.add('active'); }
+toggleMenu();
+window.scrollTo(0,0);
+}
+// Ссылка на оплату ЮKassa (замени ТВОЯ_ССЫЛКА на реальную)
+var payLink = "ТВОЯ_ССЫЛКА_ТУТ";
+document.querySelectorAll('.pay-link').forEach(a => a.href = payLink);
