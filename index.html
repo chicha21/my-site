@@ -7,7 +7,6 @@
 Бригада мастеров — Электрика и Ремонт в СПб
 
 body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; color: #e0e0e0; -webkit-tap-highlight-color: transparent; }
-/* Боковое меню */
 .menu-btn { position: fixed; top: 15px; left: 15px; z-index: 1000; cursor: pointer; background: #27ae60; padding: 10px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.5); display: flex; flex-direction: column; gap: 5px; }
 .menu-btn div { width: 25px; height: 3px; background: white; transition: 0.3s; }
 .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: #1f1f1f; z-index: 999; transition: 0.3s; padding-top: 70px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
@@ -18,14 +17,12 @@ body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #121212; colo
 .overlay.active { display: block; }
 header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; border-bottom: 4px solid #27ae60; }
 .container { max-width: 800px; margin: 20px auto; padding: 0 15px; padding-bottom: 50px; }
-/* Категории прайса */
 .category { background: #1e1e1e; border-radius: 10px; margin-bottom: 12px; border: 1px solid #333; overflow: hidden; }
 .cat-btn { width: 100%; padding: 18px; background: none; border: none; color: #fff; text-align: left; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
 .content { display: none; padding: 0 20px 15px; background: #181818; }
 .item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #2a2a2a; }
 .price { color: #2ecc71; font-weight: bold; display: block; font-size: 0.9rem; }
 .pay-link { background: #27ae60; color: white; text-decoration: none; padding: 8px 15px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; }
-/* Инфо-секции */
 .info-section { display: none; background: #1e1e1e; padding: 25px; border-radius: 12px; margin-top: 10px; border-left: 5px solid #27ae60; animation: fadeIn 0.4s; }
 .info-section.active { display: block; }
 .info-section h2 { color: #27ae60; margin-top: 0; font-size: 1.5rem; }
@@ -37,13 +34,17 @@ header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; borde
 
 
 
+
+
 🏠 Главная (Услуги)
 📞 Связаться с мастером
 📄 О компании
 🛡️ Наши гарантии
 
+
 Бригада Мастеров
-Электрика под ключ и строительные услуги в СПб
+Электрика под ключ и ремонт в СПб
+
 
 
 
@@ -55,15 +56,8 @@ header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; borde
 Прокладка кабеляот 95 ₽/мЗаказать
 
 
-💡 Освещение и Розетки +
 
-Установка розетки / выкл.350 ₽Заказать
-Перенос розетокот 1 000 ₽Заказать
-Установка люстры / браот 600 ₽Заказать
-Светодиодная лента1 200 ₽/чЗаказать
-
-
-🏗️ Строительство и плитка +
+🏗️ Строительные услуги +
 
 Укладка плитки / брусчаткиот 1 000 ₽/м²Заказать
 Натяжные потолкиот 2 800 ₽Заказать
@@ -73,15 +67,14 @@ header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; borde
 
 
 Связаться с нами
-Мы гарантируем быстрый ответ и профессиональную консультацию по вашему объекту.
+Мастер ответит на все вопросы и поможет рассчитать стоимость.
 📞 Позвонить: +7 911 780-08-79
-💬 Написать в WhatsApp
+💬 WhatsApp
 
 
 О компании
-Наша бригада предлагает широкий спектр строительных и электромонтажных услуг в Санкт-Петербурге и области. Мы специализируемся на качественных и быстрых решениях для дома, офиса и загородных участков.
-Наша команда профессионалов готова помочь вам с задачами любой сложности: от мелкого ремонта до масштабной электрификации объектов и ландшафтных работ. Команда состоит из опытных специалистов со стажем от 7 лет.
-Почему выбирают нас? Мы гарантируем оперативный выезд мастера на замер, честные рыночные цены и индивидуальный подход к каждому заказчику.
+Наша бригада предлагает широкий спектр строительных и электромонтажных услуг в Санкт-Петербурге и области. Специализируемся на качественных решениях для дома и офиса.
+Беремся за задачи любой сложности: от мелкого ремонта до масштабной электрификации и ландшафтных работ. Команда профессионалов со стажем от 7 лет.
 
 
 Наши гарантии
@@ -89,10 +82,12 @@ header { background: #1f1f1f; padding: 60px 20px 30px; text-align: center; borde
 Фиксированная стоимость услуг
 3 года реальной гарантии
 Послегарантийное обслуживание
-Компетентные мастера с опытом от 7 лет
+Мастера с опытом от 7 лет
 Лицензия на проведение работ
 Выезд до 50 км от Санкт-Петербурга
 Полный набор профессиональных инструментов
+
+
 
 
 function toggleMenu() {
@@ -112,6 +107,3 @@ else { document.getElementById(id).classList.add('active'); }
 toggleMenu();
 window.scrollTo(0,0);
 }
-// Ссылка на оплату ЮKassa (замени ТВОЯ_ССЫЛКА на реальную)
-var payLink = "ТВОЯ_ССЫЛКА_ТУТ";
-document.querySelectorAll('.pay-link').forEach(a => a.href = payLink);
