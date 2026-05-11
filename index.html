@@ -17,7 +17,6 @@
             -webkit-tap-highlight-color: transparent;
             padding-bottom: 40px;
         }
-        /* Меню-кнопка (бургер) */
         .menu-btn {
             position: fixed;
             top: 15px;
@@ -39,7 +38,6 @@
             background: white;
             transition: 0.3s;
         }
-        /* Боковое меню */
         .side-menu {
             position: fixed;
             top: 0;
@@ -69,7 +67,6 @@
         .side-menu.active {
             left: 0;
         }
-        /* Затемнение фона */
         .overlay {
             display: none;
             position: fixed;
@@ -83,7 +80,6 @@
         .overlay.active {
             display: block;
         }
-        /* Шапка */
         header {
             background: #1f1f1f;
             padding: 60px 20px 30px;
@@ -97,13 +93,11 @@
         header p {
             color: #aaa;
         }
-        /* Основной контейнер */
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 0 15px;
         }
-        /* Категории (аккордеон) */
         .category {
             background: #1e1e1e;
             border-radius: 10px;
@@ -127,7 +121,7 @@
         }
         .content {
             display: none;
-            padding: 0 20px 15px;
+            padding: 0 15px 15px;
             background: #181818;
         }
         .item {
@@ -137,32 +131,39 @@
             padding: 12px 0;
             border-bottom: 1px solid #2a2a2a;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
         .item:last-child {
             border-bottom: none;
         }
-        .price {
+        .item-info {
+            flex: 1;
+        }
+        .item-name {
+            display: block;
+            font-size: 0.95rem;
+        }
+        .item-price {
             color: #2ecc71;
             font-weight: bold;
-            font-size: 0.9rem;
-            min-width: 90px;
+            font-size: 0.85rem;
         }
         .pay-link {
             background: #27ae60;
             color: white;
             text-decoration: none;
-            padding: 6px 14px;
+            padding: 8px 18px;
             border-radius: 6px;
             font-size: 0.75rem;
             font-weight: bold;
             transition: 0.2s;
             display: inline-block;
+            cursor: pointer;
+            border: none;
         }
         .pay-link:hover {
             background: #1e874b;
         }
-        /* Секции информации (О компании, гарантии и т.д.) */
         .info-section {
             display: none;
             background: #1e1e1e;
@@ -195,7 +196,6 @@
             content: '✔️';
             margin-right: 10px;
             color: #27ae60;
-            font-weight: bold;
         }
         .contact-block {
             background: #2a2a2a;
@@ -212,28 +212,26 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Главный блок с услугами */
         #mainSection {
             display: block;
         }
-        footer {
+        .note {
             text-align: center;
-            margin: 30px 15px 20px;
-            font-size: 0.75rem;
-            color: #777;
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 20px;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
 
-<!-- Кнопка бургер-меню -->
 <div class="menu-btn" onclick="toggleMenu()">
     <div></div>
     <div></div>
     <div></div>
 </div>
 
-<!-- Боковое меню -->
 <div class="side-menu" id="sideMenu">
     <a onclick="showSection('main')">🏠 Главная (Услуги)</a>
     <a onclick="showSection('contact')">📞 Связаться с мастером</a>
@@ -242,62 +240,127 @@
 </div>
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- Шапка -->
 <header>
     <h1>Бригада Мастеров</h1>
     <p>Электрика под ключ и ремонт в СПб</p>
 </header>
 
 <div class="container">
-    <!-- Основной раздел с услугами (аккордеон) -->
     <div id="mainSection">
-        <!-- Категория: Электрика -->
+        
+        <!-- ⚡ Электромонтажные работы -->
         <div class="category">
-            <button class="cat-btn" onclick="toggleCat(this)">
-                ⚡ Электрика под ключ <span>+</span>
-            </button>
+            <button class="cat-btn" onclick="toggleCat(this)">⚡ Электромонтажные работы <span>+</span></button>
             <div class="content">
-                <div class="item">
-                    <span>Электрика под ключ (объект)</span>
-                    <div><span class="price">от 5 000 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
-                <div class="item">
-                    <span>Сборка электрощита</span>
-                    <div><span class="price">от 1 500 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
-                <div class="item">
-                    <span>Монтаж СИП / Опор ЛЭП</span>
-                    <div><span class="price">от 20 000 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
-                <div class="item">
-                    <span>Прокладка кабеля</span>
-                    <div><span class="price">от 95 ₽/м</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
+                <div class="item"><div class="item-info"><span class="item-name">Электрика под ключ</span><span class="item-price">от 5 000 ₽</span></div><a href="#" class="pay-link" data-service="Электрика под ключ">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Монтаж кабель-канала</span><span class="item-price">от 350 ₽</span></div><a href="#" class="pay-link" data-service="Монтаж кабель-канала">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Прокладка кабеля</span><span class="item-price">от 95 ₽/м</span></div><a href="#" class="pay-link" data-service="Прокладка кабеля">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Монтаж СИП-кабелей</span><span class="item-price">от 2 000 ₽</span></div><a href="#" class="pay-link" data-service="Монтаж СИП-кабелей">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Подключение силового кабеля к щиту</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Подключение силового кабеля к щиту">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Демонтаж электросети</span><span class="item-price">от 1 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Демонтаж электросети">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка распределительных коробок</span><span class="item-price">от 500 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка распределительных коробок">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка генераторов</span><span class="item-price">от 2 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Установка генераторов">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка стабилизаторов напряжения</span><span class="item-price">от 2 000 ₽/час</span></div><a href="#" class="pay-link" data-service="Установка стабилизаторов напряжения">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка опор ЛЭП</span><span class="item-price">от 20 000 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка опор ЛЭП">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Перенос опор ЛЭП</span><span class="item-price">от 25 000 ₽/шт</span></div><a href="#" class="pay-link" data-service="Перенос опор ЛЭП">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Монтаж электрического тёплого пола</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Монтаж электрического тёплого пола">Заказать</a></div>
             </div>
         </div>
-        <!-- Категория: Строительные услуги -->
+
+        <!-- 🔌 Сборка электрощита и учёт -->
         <div class="category">
-            <button class="cat-btn" onclick="toggleCat(this)">
-                🏗️ Строительные услуги <span>+</span>
-            </button>
+            <button class="cat-btn" onclick="toggleCat(this)">🔌 Сборка электрощита и учёт <span>+</span></button>
             <div class="content">
-                <div class="item">
-                    <span>Укладка плитки / брусчатки</span>
-                    <div><span class="price">от 1 000 ₽/м²</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
-                <div class="item">
-                    <span>Натяжные потолки</span>
-                    <div><span class="price">от 2 800 ₽</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
-                <div class="item">
-                    <span>Вывоз грунта (погрузка)</span>
-                    <div><span class="price">от 600 ₽/м³</span> <a href="#" class="pay-link">Заказать</a></div>
-                </div>
+                <div class="item"><div class="item-info"><span class="item-name">Сборка электрощита</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Сборка электрощита">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка электросчётчика</span><span class="item-price">от 2 000 ₽</span></div><a href="#" class="pay-link" data-service="Установка электросчётчика">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка распределительных щитов</span><span class="item-price">от 700 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка распределительных щитов">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Замена приборов учёта</span><span class="item-price">от 1 200 ₽/шт</span></div><a href="#" class="pay-link" data-service="Замена приборов учёта">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка контактора и автоматов</span><span class="item-price">от 450 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка контактора и автоматов">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Замена трансформаторов тока</span><span class="item-price">от 600 ₽/шт</span></div><a href="#" class="pay-link" data-service="Замена трансформаторов тока">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка автоматов защиты</span><span class="item-price">от 350 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка автоматов защиты">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 🔌 Розетки и выключатели -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">🔌 Розетки и выключатели <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Ремонт розеток и выключателей</span><span class="item-price">от 300 ₽</span></div><a href="#" class="pay-link" data-service="Ремонт розеток и выключателей">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка розеток и выключателей</span><span class="item-price">от 350 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка розеток и выключателей">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Перенос розеток</span><span class="item-price">от 1 000 ₽/шт</span></div><a href="#" class="pay-link" data-service="Перенос розеток">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка розетки для электроплиты</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Установка розетки для электроплиты">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 💡 Освещение и свет -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">💡 Освещение и свет <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Установка люстры или светильника</span><span class="item-price">от 1 000 ₽</span></div><a href="#" class="pay-link" data-service="Установка люстры или светильника">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Ремонт люстр и приборов</span><span class="item-price">1 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Ремонт люстр и приборов">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка бра</span><span class="item-price">600 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка бра">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка уличных фонарей</span><span class="item-price">от 1 500 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка уличных фонарей">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка гирлянд</span><span class="item-price">2 000 ₽</span></div><a href="#" class="pay-link" data-service="Установка гирлянд">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Замена ламп</span><span class="item-price">от 150 ₽/шт</span></div><a href="#" class="pay-link" data-service="Замена ламп">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка светодиодной ленты</span><span class="item-price">1 200 ₽/час</span></div><a href="#" class="pay-link" data-service="Установка светодиодной ленты">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Демонтаж люстры</span><span class="item-price">500 ₽/шт</span></div><a href="#" class="pay-link" data-service="Демонтаж люстры">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка точечного светильника</span><span class="item-price">350 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка точечного светильника">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка датчиков движения</span><span class="item-price">от 500 ₽</span></div><a href="#" class="pay-link" data-service="Установка датчиков движения">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 🔧 Подключение техники -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">🔧 Подключение техники <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Электрический полотенцесушитель</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Электрический полотенцесушитель">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Духовой шкаф</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Духовой шкаф">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Электрический котёл</span><span class="item-price">от 2 000 ₽</span></div><a href="#" class="pay-link" data-service="Электрический котёл">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Варочная панель</span><span class="item-price">от 1 500 ₽</span></div><a href="#" class="pay-link" data-service="Варочная панель">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 🏠 Строительные услуги -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">🏠 Строительные услуги <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 8 м²</span><span class="item-price">2 800 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 8 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 10 м²</span><span class="item-price">3 500 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 10 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 14 м²</span><span class="item-price">4 200 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 14 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 16 м²</span><span class="item-price">5 600 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 16 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 18 м²</span><span class="item-price">7 000 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 18 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Натяжные потолки 20 м²</span><span class="item-price">7 700 ₽</span></div><a href="#" class="pay-link" data-service="Натяжные потолки 20 м²">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Укладка тротуарной плитки</span><span class="item-price">от 1 000 ₽/м²</span></div><a href="#" class="pay-link" data-service="Укладка тротуарной плитки">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Укладка брусчатки</span><span class="item-price">от 1 000 ₽/м²</span></div><a href="#" class="pay-link" data-service="Укладка брусчатки">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Погрузка и вывоз грунта</span><span class="item-price">от 600 ₽/м³</span></div><a href="#" class="pay-link" data-service="Погрузка и вывоз грунта">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 📡 Слаботочные системы и аварийный вызов -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">📡 Слаботочные и аварийные <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Установка звонка</span><span class="item-price">от 600 ₽/час</span></div><a href="#" class="pay-link" data-service="Установка звонка">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Установка телефонных розеток</span><span class="item-price">350 ₽/шт</span></div><a href="#" class="pay-link" data-service="Установка телефонных розеток">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Замена проводки</span><span class="item-price">от 400 ₽</span></div><a href="#" class="pay-link" data-service="Замена проводки">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Диагностика проводки</span><span class="item-price">от 1 200 ₽</span></div><a href="#" class="pay-link" data-service="Диагностика проводки">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Аварийный вызов электрика</span><span class="item-price">от 2 000 ₽</span></div><a href="#" class="pay-link" data-service="Аварийный вызов электрика">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Монтаж контура заземления</span><span class="item-price">1 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Монтаж контура заземления">Заказать</a></div>
+            </div>
+        </div>
+
+        <!-- 📐 Проектирование -->
+        <div class="category">
+            <button class="cat-btn" onclick="toggleCat(this)">📐 Проектирование и расчёты <span>+</span></button>
+            <div class="content">
+                <div class="item"><div class="item-info"><span class="item-name">Расчёт нагрузки на кабель</span><span class="item-price">1 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Расчёт нагрузки на кабель">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Пусконаладочные работы</span><span class="item-price">от 1 500 ₽/час</span></div><a href="#" class="pay-link" data-service="Пусконаладочные работы">Заказать</a></div>
+                <div class="item"><div class="item-info"><span class="item-name">Проектирование, сметы</span><span class="item-price">договорная</span></div><a href="#" class="pay-link" data-service="Проектирование и сметы">Заказать</a></div>
             </div>
         </div>
     </div>
 
-    <!-- Страница "Связаться с мастером" -->
+    <!-- Контакты -->
     <div id="contact" class="info-section">
         <h2>📞 Связаться с нами</h2>
         <p>Мастер ответит на все вопросы и поможет рассчитать стоимость.</p>
@@ -307,99 +370,76 @@
         </div>
     </div>
 
-    <!-- Страница "О компании" -->
+    <!-- О компании -->
     <div id="about" class="info-section">
         <h2>📄 О компании</h2>
-        <p>Наша бригада предлагает широкий спектр строительных и электромонтажных услуг в Санкт-Петербурге и области. Специализируемся на качественных решениях для дома и офиса. Беремся за задачи любой сложности: от мелкого ремонта до масштабной электрификации и ландшафтных работ.</p>
-        <p style="margin-top: 15px;">✅ Команда профессионалов со стажем от 7 лет.</p>
-        <p>✅ Лицензия на проведение работ. Выезд до 50 км от Санкт-Петербурга.</p>
+        <p>Профессиональная бригада электриков и строителей в Санкт-Петербурге и области. Опыт работы — более 7 лет. Работаем с частными домами, квартирами, коммерческими объектами.</p>
+        <p style="margin-top: 15px;">✅ Бесплатный выезд на замер</p>
+        <p>✅ Поэтапная оплата</p>
+        <p>✅ Работаем с юрлицами и ИП</p>
     </div>
 
-    <!-- Страница "Наши гарантии" -->
+    <!-- Гарантии -->
     <div id="guarantee" class="info-section">
         <h2>🛡️ Наши гарантии</h2>
         <ul class="garant-list">
-            <li>Фиксированная стоимость услуг</li>
-            <li>3 года реальной гарантии</li>
-            <li>Послегарантийное обслуживание</li>
+            <li>Гарантия 3 года на все работы</li>
+            <li>Фиксированная стоимость до начала работ</li>
+            <li>Профессиональный инструмент</li>
             <li>Мастера с опытом от 7 лет</li>
-            <li>Лицензия на проведение работ</li>
-            <li>Выезд до 50 км от Санкт-Петербурга</li>
-            <li>Полный набор профессиональных инструментов</li>
+            <li>Выезд до 50 км от СПб</li>
+            <li>Лицензия на электромонтажные работы</li>
         </ul>
     </div>
 </div>
 
-<footer>
-    © 2025 Бригада Мастеров — электромонтаж и ремонт в СПб
-</footer>
+<div class="note">
+    🔐 Оплата через ЮKassa — безопасно и быстро
+</div>
 
 <script>
-    // Функция открытия/закрытия бокового меню
     function toggleMenu() {
-        const menu = document.getElementById('sideMenu');
-        const overlay = document.getElementById('overlay');
-        menu.classList.toggle('active');
-        overlay.classList.toggle('active');
+        document.getElementById('sideMenu').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
     }
 
-    // Функция аккордеона (раскрытие блока с услугами)
     function toggleCat(btn) {
         const content = btn.nextElementSibling;
         const isOpen = content.style.display === "block";
-        // Закрываем или открываем блок
         content.style.display = isOpen ? "none" : "block";
-        // Меняем символ в кнопке (+ / -)
-        const span = btn.querySelector('span');
-        if (span) {
-            span.innerHTML = isOpen ? "+" : "−";
-        }
+        btn.querySelector('span').innerHTML = isOpen ? "+" : "−";
     }
 
-    // Функция переключения между разделами: главная / контакты / о компании / гарантии
-    function showSection(sectionId) {
-        // Скрываем основной блок услуг
-        const mainBlock = document.getElementById('mainSection');
-        if (mainBlock) mainBlock.style.display = 'none';
-        
-        // Скрываем все info-секции
-        const infoSections = document.querySelectorAll('.info-section');
-        infoSections.forEach(section => {
-            section.classList.remove('active');
-        });
-        
-        if (sectionId === 'main') {
-            // Показываем главный блок с аккордеоном
-            if (mainBlock) mainBlock.style.display = 'block';
+    function showSection(id) {
+        document.getElementById('mainSection').style.display = 'none';
+        document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
+        if(id === 'main') {
+            document.getElementById('mainSection').style.display = 'block';
         } else {
-            // Показываем выбранную секцию (contact, about, guarantee)
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) targetSection.classList.add('active');
+            document.getElementById(id).classList.add('active');
         }
-        
-        // Закрываем меню после выбора пункта
-        toggleMenu();  // закрывает бургер-меню и оверлей
-        
-        // Прокручиваем страницу вверх
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        toggleMenu();
+        window.scrollTo(0,0);
     }
-    
-    // Чтобы аккордеон по умолчанию был закрыт, но можно оставить первый открытым? 
-    // По желанию: закроем оба блока, чтобы страница выглядела аккуратно. 
-    // Уже в стилях .content { display: none; } — всё закрыто.
-    // Небольшой фикс: инициализация символов + у всех кнопок
-    document.addEventListener('DOMContentLoaded', function() {
-        const catBtns = document.querySelectorAll('.cat-btn');
-        catBtns.forEach(btn => {
-            let span = btn.querySelector('span');
-            if (span && span.innerText !== '+') {
-                span.innerText = '+';
-            }
-            // Убедимся что все контенты скрыты
-            let contentDiv = btn.nextElementSibling;
-            if (contentDiv && contentDiv.classList.contains('content')) {
-                contentDiv.style.display = 'none';
-            }
+
+    // ВРЕМЕННО: кнопки ведут на #
+    // КОГДА ПОЛУЧИШЬ ССЫЛКИ ОТ ЮKASSA — ЗАМЕНИ ИХ ЗДЕСЬ
+    // Формат: data-link="ТВОЯ_ССЫЛКА"
+    document.querySelectorAll('.pay-link').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const serviceName = this.getAttribute('data-service') || 'Услуга';
+            // ВРЕМЕННО: заглушка
+            alert(`🔔 Оплата через ЮKassa\n\nУслуга: ${serviceName}\n\nСсылку на оплату добавишь позже.`);
+            // КОГДА БУДУТ ССЫЛКИ — РАСКОММЕНТИРУЙ И ЗАМЕНЬ # НА РЕАЛЬНЫЕ URL:
+            // window.location.href = "ТВОЯ_ССЫЛКА_ОТ_ЮKASSA?service=" + encodeURIComponent(serviceName);
+        });
+    });
+
+    // Инициализация: все блоки закрыты, символы +
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.cat-btn span').forEach(span => {
+            if(span.innerText !== '+') span.innerText = '+';
         });
     });
 </script>
